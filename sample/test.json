@@ -1,0 +1,435 @@
+{
+    "journeyName": "Sample Journey Name",
+    "journeyTime": 300000,
+    "kibanaVersion": "v7.17.1",
+    "kibanaUrl": "http:localhost:5260",
+    "maxUsersCount": 1,
+    "traceItems":
+    [
+        {
+            "service": "kibana-proxy",
+            "transactionType": "request",
+            "transactionName": "GET ?/bundles/?",
+            "traces":
+            [
+                {
+                    "@timestamp": "2022-04-07T09:58:06.579Z",
+                    "http":
+                    {
+                        "request":
+                        {
+                            "headers":
+                            {
+                                "Cookie":
+                                [
+                                    "sid=Fe26.2**abd98025f7ea9cb8c68a9398617ff47fe28466fe307caa34d8051fac6df94d7b*tamw2ibOqQb0u8hTLv_5GQ*HNCFNTR2kpXpvT5EtbGo6RMUw1TbX6pXi-eqCC1V3hqG6A6YZds8BLW2-W3vk65UeN2XBiy64coFLCvh79OBN9bAw--DpW5H1F9M3DlRJ2R1BcKukoE0nECojkWa3X-AEx6mdQFn2bkppAGDRjFcNguO0Whzn2yWMwmZl-2YikoSCj-TBhIzvZH-9uHp4RylddWGQ1IIrrpVoqe7aM9w6mZsftXtAfwQH3SMkBjXIKu5Bkd929l70p-02MCIrOIG**b6e98c70318f9b8311a86cc33a60956f4e3c92048aef8041f7221d1e7bdcf3c1*zfdwKv2i4tgKKVTLOaQDBr1OQKRASILpADpP-DHNTy0"
+                                ],
+                                "Sec-Ch-Ua":
+                                [
+                                    "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\""
+                                ],
+                                "Accept":
+                                [
+                                    "*/*"
+                                ],
+                                "Sec-Ch-Ua-Platform":
+                                [
+                                    "\"macOS\""
+                                ],
+                                "User-Agent":
+                                [
+                                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4695.0 Safari/537.36"
+                                ],
+                                "Referer":
+                                [
+                                    "http://localhost:5620/app/home"
+                                ],
+                                "Connection":
+                                [
+                                    "keep-alive"
+                                ],
+                                "Sec-Fetch-Dest":
+                                [
+                                    "script"
+                                ],
+                                "Sec-Fetch-Site":
+                                [
+                                    "same-origin"
+                                ],
+                                "Host":
+                                [
+                                    "localhost:5620"
+                                ],
+                                "Accept-Encoding":
+                                [
+                                    "gzip, deflate, br"
+                                ],
+                                "Pragma":
+                                [
+                                    "no-cache"
+                                ],
+                                "Sec-Fetch-Mode":
+                                [
+                                    "no-cors"
+                                ],
+                                "Cache-Control":
+                                [
+                                    "no-cache"
+                                ],
+                                "Accept-Language":
+                                [
+                                    "en-GB,en;q=0.9"
+                                ],
+                                "Sec-Ch-Ua-Mobile":
+                                [
+                                    "?0"
+                                ]
+                            },
+                            "method": "GET"
+                        },
+                        "response":
+                        {
+                            "headers":
+                            {
+                                "Keep-Alive":
+                                [
+                                    "timeout=120"
+                                ],
+                                "Transfer-Encoding":
+                                [
+                                    "chunked"
+                                ],
+                                "X-Content-Type-Options":
+                                [
+                                    "nosniff"
+                                ],
+                                "Connection":
+                                [
+                                    "keep-alive"
+                                ],
+                                "Date":
+                                [
+                                    "Thu, 07 Apr 2022 09:58:06 GMT"
+                                ],
+                                "Kbn-Name":
+                                [
+                                    "batuxd"
+                                ],
+                                "Referrer-Policy":
+                                [
+                                    "no-referrer-when-downgrade"
+                                ],
+                                "Cache-Control":
+                                [
+                                    "must-revalidate"
+                                ],
+                                "Etag":
+                                [
+                                    "\"ca01ac69a15f5c01b202519d992d215576de0b7b-/9007199254740991/bundles/core/-gzip\""
+                                ],
+                                "Kbn-License-Sig":
+                                [
+                                    "42198982d90812c33eeb7a09ccaaa8f576e23ff9f17fd2edca887ec4ff4542a5"
+                                ],
+                                "Content-Encoding":
+                                [
+                                    "gzip"
+                                ],
+                                "Vary":
+                                [
+                                    "accept-encoding"
+                                ],
+                                "Content-Type":
+                                [
+                                    "application/javascript; charset=utf-8"
+                                ]
+                            },
+                            "status_code": 200
+                        }
+                    },
+                    "transaction_id": "029a43908359bebf",
+                    "url_path": "/9007199254740991/bundles/core/core.chunk.1.js",
+                    "url_base": "http://localhost:5620"
+                },
+                {
+                    "@timestamp": "2022-04-07T09:58:07.201Z",
+                    "http":
+                    {
+                        "request":
+                        {
+                            "headers":
+                            {
+                                "Cookie":
+                                [
+                                    "sid=Fe26.2**abd98025f7ea9cb8c68a9398617ff47fe28466fe307caa34d8051fac6df94d7b*tamw2ibOqQb0u8hTLv_5GQ*HNCFNTR2kpXpvT5EtbGo6RMUw1TbX6pXi-eqCC1V3hqG6A6YZds8BLW2-W3vk65UeN2XBiy64coFLCvh79OBN9bAw--DpW5H1F9M3DlRJ2R1BcKukoE0nECojkWa3X-AEx6mdQFn2bkppAGDRjFcNguO0Whzn2yWMwmZl-2YikoSCj-TBhIzvZH-9uHp4RylddWGQ1IIrrpVoqe7aM9w6mZsftXtAfwQH3SMkBjXIKu5Bkd929l70p-02MCIrOIG**b6e98c70318f9b8311a86cc33a60956f4e3c92048aef8041f7221d1e7bdcf3c1*zfdwKv2i4tgKKVTLOaQDBr1OQKRASILpADpP-DHNTy0"
+                                ],
+                                "Sec-Ch-Ua":
+                                [
+                                    "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\""
+                                ],
+                                "Accept":
+                                [
+                                    "*/*"
+                                ],
+                                "Sec-Ch-Ua-Platform":
+                                [
+                                    "\"macOS\""
+                                ],
+                                "User-Agent":
+                                [
+                                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4695.0 Safari/537.36"
+                                ],
+                                "Connection":
+                                [
+                                    "keep-alive"
+                                ],
+                                "Referer":
+                                [
+                                    "http://localhost:5620/app/home"
+                                ],
+                                "Sec-Fetch-Dest":
+                                [
+                                    "script"
+                                ],
+                                "Sec-Fetch-Site":
+                                [
+                                    "same-origin"
+                                ],
+                                "Host":
+                                [
+                                    "localhost:5620"
+                                ],
+                                "Pragma":
+                                [
+                                    "no-cache"
+                                ],
+                                "Accept-Encoding":
+                                [
+                                    "gzip, deflate, br"
+                                ],
+                                "Sec-Fetch-Mode":
+                                [
+                                    "no-cors"
+                                ],
+                                "Cache-Control":
+                                [
+                                    "no-cache"
+                                ],
+                                "Accept-Language":
+                                [
+                                    "en-GB,en;q=0.9"
+                                ],
+                                "Sec-Ch-Ua-Mobile":
+                                [
+                                    "?0"
+                                ]
+                            },
+                            "method": "GET"
+                        },
+                        "response":
+                        {
+                            "headers":
+                            {
+                                "Transfer-Encoding":
+                                [
+                                    "chunked"
+                                ],
+                                "Keep-Alive":
+                                [
+                                    "timeout=120"
+                                ],
+                                "X-Content-Type-Options":
+                                [
+                                    "nosniff"
+                                ],
+                                "Connection":
+                                [
+                                    "keep-alive"
+                                ],
+                                "Date":
+                                [
+                                    "Thu, 07 Apr 2022 09:58:07 GMT"
+                                ],
+                                "Kbn-Name":
+                                [
+                                    "batuxd"
+                                ],
+                                "Referrer-Policy":
+                                [
+                                    "no-referrer-when-downgrade"
+                                ],
+                                "Etag":
+                                [
+                                    "\"54ee51e9af14b96ef30c1d7c56d33bb3c2855aea-/9007199254740991/bundles/plugin/charts/kibana/-gzip\""
+                                ],
+                                "Cache-Control":
+                                [
+                                    "must-revalidate"
+                                ],
+                                "Kbn-License-Sig":
+                                [
+                                    "42198982d90812c33eeb7a09ccaaa8f576e23ff9f17fd2edca887ec4ff4542a5"
+                                ],
+                                "Content-Encoding":
+                                [
+                                    "gzip"
+                                ],
+                                "Vary":
+                                [
+                                    "accept-encoding"
+                                ],
+                                "Content-Type":
+                                [
+                                    "application/javascript; charset=utf-8"
+                                ]
+                            },
+                            "status_code": 200
+                        }
+                    },
+                    "transaction_id": "a62e6646f846fc79",
+                    "url_path": "/9007199254740991/bundles/plugin/charts/kibana/charts.chunk.0.js",
+                    "url_base": "http://localhost:5620"
+                },
+                {
+                    "@timestamp": "2022-04-07T09:58:07.698Z",
+                    "http":
+                    {
+                        "request":
+                        {
+                            "headers":
+                            {
+                                "Cookie":
+                                [
+                                    "sid=Fe26.2**41725bbd98466bd27fbe6b3eda8013a191cf49b1285d1f89e9c543b9c40b9081*D8l9WVgmcK0tDiGknDCyfQ*Xe0-2mbbEcYkRxB-VeLk3Iav1p-qvdcOaNpAWBaF5khkv8X3pQq4WGrD7TmWJW-pJSxBijYzj_gWaHEhitDijEXPZuYcx2zAi9pm00XrXIh-ur6jWODer9AmspF9eQJADO1aTlgJcxaCuXbpF2YUHoGa3ZUdDXuiuccwrPE1kleDu45TrfAtL5PiTKLItOanrXBbc3MkJosHli5bkXPx0m6KJhweHFdAp_QhI7oXdsT7XPlCcqAADs0-FXl0s3BN**ba7df73639739b54ffdde92420133c84de27d2f922f29670966144c0967a2cbb*QWzC6QTBdAUo9CMoU3vOfhE28Qc3oQ6WwBZ87bxmuRc"
+                                ],
+                                "Sec-Ch-Ua":
+                                [
+                                    "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"98\""
+                                ],
+                                "Accept":
+                                [
+                                    "*/*"
+                                ],
+                                "Sec-Ch-Ua-Platform":
+                                [
+                                    "\"macOS\""
+                                ],
+                                "Referer":
+                                [
+                                    "http://localhost:5620/app/home"
+                                ],
+                                "Connection":
+                                [
+                                    "keep-alive"
+                                ],
+                                "User-Agent":
+                                [
+                                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4695.0 Safari/537.36"
+                                ],
+                                "Sec-Fetch-Site":
+                                [
+                                    "same-origin"
+                                ],
+                                "Sec-Fetch-Dest":
+                                [
+                                    "script"
+                                ],
+                                "Host":
+                                [
+                                    "localhost:5620"
+                                ],
+                                "Accept-Encoding":
+                                [
+                                    "gzip, deflate, br"
+                                ],
+                                "Pragma":
+                                [
+                                    "no-cache"
+                                ],
+                                "Sec-Fetch-Mode":
+                                [
+                                    "no-cors"
+                                ],
+                                "Cache-Control":
+                                [
+                                    "no-cache"
+                                ],
+                                "Accept-Language":
+                                [
+                                    "en-GB,en;q=0.9"
+                                ],
+                                "Sec-Ch-Ua-Mobile":
+                                [
+                                    "?0"
+                                ]
+                            },
+                            "method": "GET"
+                        },
+                        "response":
+                        {
+                            "headers":
+                            {
+                                "Keep-Alive":
+                                [
+                                    "timeout=120"
+                                ],
+                                "Transfer-Encoding":
+                                [
+                                    "chunked"
+                                ],
+                                "X-Content-Type-Options":
+                                [
+                                    "nosniff"
+                                ],
+                                "Connection":
+                                [
+                                    "keep-alive"
+                                ],
+                                "Date":
+                                [
+                                    "Thu, 07 Apr 2022 09:58:07 GMT"
+                                ],
+                                "Kbn-Name":
+                                [
+                                    "batuxd"
+                                ],
+                                "Referrer-Policy":
+                                [
+                                    "no-referrer-when-downgrade"
+                                ],
+                                "Etag":
+                                [
+                                    "\"9cb1252948c00bd5025fdaa0c4245efedfb08501-/9007199254740991/bundles/plugin/security/8.0.0/-gzip\""
+                                ],
+                                "Cache-Control":
+                                [
+                                    "must-revalidate"
+                                ],
+                                "Kbn-License-Sig":
+                                [
+                                    "42198982d90812c33eeb7a09ccaaa8f576e23ff9f17fd2edca887ec4ff4542a5"
+                                ],
+                                "Content-Encoding":
+                                [
+                                    "gzip"
+                                ],
+                                "Vary":
+                                [
+                                    "accept-encoding"
+                                ],
+                                "Content-Type":
+                                [
+                                    "application/javascript; charset=utf-8"
+                                ]
+                            },
+                            "status_code": 200
+                        }
+                    },
+                    "transaction_id": "b0b91ee25ac2caf6",
+                    "url_path": "/9007199254740991/bundles/plugin/security/8.0.0/security.chunk.8.js",
+                    "url_base": "http://localhost:5620"
+                }
+            ]
+        }
+    ]
+}

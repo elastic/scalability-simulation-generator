@@ -1,0 +1,7 @@
+    .exec(
+      http("${path}")
+        .post("${path}")
+        .body(StringBody(${payload}))
+        .asJson
+        .headers(${headers})
+    )

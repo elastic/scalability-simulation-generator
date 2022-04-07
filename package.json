@@ -5,7 +5,7 @@
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/dmlemeshko/scalability-simulation-generator",
+  "repository": "https://github.com/elastic/scalability-simulation-generator",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -42,11 +42,14 @@
     "node": ">=10"
   },
   "dependencies": {
-    "@bitauth/libauth": "^1.17.1"
+    "@bitauth/libauth": "^1.17.1",
+    "es6-template-string": "^1.2.0",
+    "yargs": "^17.4.0"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/yargs": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "ava": "^3.12.1",
