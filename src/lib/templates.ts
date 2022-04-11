@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { Request } from './buildSimulation';
+import { Request } from './types/simulation';
 
 export enum TemplateName {
     SIMULATION = 'simulation',

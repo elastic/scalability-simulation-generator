@@ -1,24 +1,9 @@
 import template from 'es6-template-string';
 
+
 import { getExec, getTemplates, TemplateName } from './templates';
 import { Header } from './types/http';
-
-export type Request = {
-    readonly timestamp: number,
-    readonly method: string,
-    readonly path: string,
-    readonly headers: ReadonlyArray<Header>,
-    readonly body?: string,
-}
-
-export type Simulation = {
-    readonly simulationName: string,
-    readonly packageName: string,
-    readonly scenarioName: string,
-    readonly baseUrl: string,
-    readonly maxUsersCount: number,
-    readonly requests: ReadonlyArray<Request>,
-}
+import { Request, Simulation } from './types/simulation';
 
 const buildHeaders = (headers: ReadonlyArray<Header>) => {
     return headers
@@ -30,7 +15,6 @@ const buildScenario = (scenarioName: string, requests: ReadonlyArray<Request>, t
     const start = template(templates.get(TemplateName.SCENARIO), { scenarioName });
     // convert requests into array of Gatling exec http calls
     const execs = requests.map((req, index, reqArray) => {
-        console.log(req.timestamp)
         const method = req.method.toLowerCase();
         const templateStr = getExec(templates, req);
         const templateArgs = !req.body
