@@ -19,7 +19,7 @@ const buildScenario = (scenarioName: string, requests: ReadonlyArray<Request>, t
         const templateStr = getExec(templates, req);
         const templateArgs = !req.body
             ? { path: req.path, method, headers: buildHeaders(req.headers) }
-            : { path: req.path, method, headers: buildHeaders(req.headers), payload: JSON.stringify(req.body) }
+            : { path: req.path, method, headers: buildHeaders(req.headers), payload: JSON.stringify(req.body).replace(/"/g, "\\\"") }
         // construct Gatling exec http calls 
         const exec = template(templateStr, templateArgs);
         // add delay before next request

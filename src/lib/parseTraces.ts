@@ -4,11 +4,25 @@
 /* eslint-disable prefer-const */
 /* eslint functional/prefer-readonly-type: 0 */
 
-import { Trace, Transaction } from './types/journey';
+import { Trace, TraceItem, Transaction } from './types/journey';
 import { Request } from './types/simulation';
 
 const methodRegEx = /GET|POST|PUT|DELETE|UPDATE/g;
 const isValidHttpTrace = (trace: Trace) => trace?.url_path?.length > 1 && trace.http?.request?.headers && trace.http?.request?.method?.match(methodRegEx);
+
+export const getHttpRequests = (traces: ReadonlyArray<TraceItem>): Array<Request> => {
+    return traces.map(trace => {
+        const timestamp = new Date(trace.timestamp).getTime();
+        const date = trace.timestamp;
+        const transactionId = trace.transaction.id;
+        const method = trace.request.method || '';
+        const path = trace.request.url.path;
+        const _headers = trace.request.headers || {};
+        const headers = Object.keys(_headers).map(key => ({ name: key, value: String(_headers[key].join('')) }));
+        const body = trace.request.body
+        return { timestamp, date, transactionId, method, path, headers, body }
+    }).sort((a, b) => a.timestamp > b.timestamp ? 1 : -1);
+}
 
 export const parseTraces = (transactions:Array<Transaction>): Array<Request> => {
     let httpTraces = new Array<Trace>();
