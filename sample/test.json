@@ -1,9 +1,7 @@
 {
     "journeyName": "Sample Journey Name",
-    "journeyTime": 300000,
-    "kibanaVersion": "v7.17.1",
-    "kibanaUrl": "http:localhost:5260",
-    "maxUsersCount": 1,
+    "kibanaVersion": "8.3.0",
+    "maxUsersCount": "299",
     "traceItems":
     [
         {

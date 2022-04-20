@@ -2,7 +2,6 @@ import { Http } from './http';
 
 export type Journey = {
     readonly journeyName: string,
-    readonly kibanaUrl: string,
     readonly kibanaVersion: string,
     readonly maxUsersCount: number,
     readonly traceItems: ReadonlyArray<TraceItem>,

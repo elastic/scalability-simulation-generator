@@ -17,7 +17,7 @@ export type SimulationParams = {
 }
 
 export const generateSimulations = () => {
-    const { dir, logs, packageName, errMessage } = cli();
+    const { baseUrl, dir, logs, packageName, errMessage } = cli();
 
     if (errMessage) {
         return console.error(`Error: ${errMessage}`);
@@ -44,7 +44,7 @@ export const generateSimulations = () => {
             simulationName,
             packageName,
             scenarioName: `${journey.journeyName} ${journey.kibanaVersion}`,
-            baseUrl: journey.kibanaUrl,
+            baseUrl: `${baseUrl.protocol}//${baseUrl.host}`,
             maxUsersCount: journey.maxUsersCount,
             requests: requests
         });
