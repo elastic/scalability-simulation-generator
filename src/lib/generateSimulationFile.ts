@@ -3,7 +3,7 @@ import path from 'path';
 
 import { buildSimulation } from './buildSimulation';
 import { cli } from './cli';
-import {parseTraces} from './parseTraces';
+import { getHttpRequests } from './parseTraces';
 import { Journey } from './types/journey';
 import { Request } from './types/simulation';
 
@@ -17,7 +17,7 @@ export type SimulationParams = {
 }
 
 export const generateSimulations = () => {
-    const { dir, logs, packageName, errMessage } = cli();
+    const { baseUrl, dir, logs, packageName, errMessage } = cli();
 
     if (errMessage) {
         return console.error(`Error: ${errMessage}`);
@@ -28,7 +28,8 @@ export const generateSimulations = () => {
 
     jsonInDir.forEach(file => {
         const journey: Journey = JSON.parse(fs.readFileSync(path.resolve(dir, file)).toString());
-        const requests = parseTraces(journey.traceItems.filter(tr => tr.transactionType === 'request'));
+        // const requests = parseTraces(journey.traceItems.filter(tr => tr.transactionType === 'request'));
+        const requests = getHttpRequests(journey.traceItems);
 
         if (logs) {
             requests.forEach(req => console.log(`${req.date} ${req.transactionId} ${req.method} ${req.path}`))
@@ -43,7 +44,7 @@ export const generateSimulations = () => {
             simulationName,
             packageName,
             scenarioName: `${journey.journeyName} ${journey.kibanaVersion}`,
-            baseUrl: journey.kibanaUrl,
+            baseUrl: `${baseUrl.protocol}//${baseUrl.host}`,
             maxUsersCount: journey.maxUsersCount,
             requests: requests
         });

@@ -5,6 +5,7 @@ Generates simulations from APM parser output
 ## How to use
 
 Build project
+
 ```
 yarn install && yarn run build
 ```
@@ -14,12 +15,13 @@ Put json files from APM parser (each json file should contain requests for a sin
 Run script:
 
 ```
-node scripts/generate_simulations.js --dir ./sample --packageName org.kibanaLoadTest
+node scripts/generate_simulations.js --dir ./sample --packageName org.kibanaLoadTest --url "http://localhost:5620"
 ```
 
 Check `output` directory for .scala files.
 
 Generated simulation example:
+
 ```
 package org.kibanaLoadTest
 
@@ -31,7 +33,7 @@ import io.gatling.jdbc.Predef._
 
 class SampleJourneyName extends Simulation {
   val httpProtocol = http
-    .baseUrl("https://kibana-ops-e2e-perf.kb.us-central1.gcp.cloud.es.io/")
+    .baseUrl("http://localhost:5620")
     .inferHtmlResources()
     .acceptHeader("*/*")
     .acceptEncodingHeader("gzip, deflate")
@@ -61,4 +63,3 @@ class SampleJourneyName extends Simulation {
 }
 
 ```
-

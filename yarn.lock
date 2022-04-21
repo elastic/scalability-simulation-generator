@@ -206,11 +206,6 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@bitauth/libauth@^1.17.1":
-  version "1.19.1"
-  resolved "https://registry.npmjs.org/@bitauth/libauth/-/libauth-1.19.1.tgz"
-  integrity sha512-R524tD5VwOt3QRHr7N518nqTVR/HKgfWL4LypekcGuNQN8R4PWScvuRcRzrY39A28kLztMv+TJdiKuMNbkU1ug==
-
 "@commitlint/config-validator@^16.2.1":
   version "16.2.1"
   resolved "https://registry.npmjs.org/@commitlint/config-validator/-/config-validator-16.2.1.tgz"
