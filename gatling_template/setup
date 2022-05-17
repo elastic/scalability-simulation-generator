@@ -1,1 +1,0 @@
-  setUp(scn.inject(atOnceUsers(${maxUsersCount}))).protocols(httpProtocol)

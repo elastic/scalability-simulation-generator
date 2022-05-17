@@ -1,8 +1,0 @@
-    .exec(
-      http("${path}")
-        .post("${path}")
-        .body(StringBody("${payload}"))
-        .asJson
-        .headers(${headers})
-        .check(headerRegex("set-cookie", ".+?(?=;)").saveAs("Cookie"))
-    )

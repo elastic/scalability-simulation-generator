@@ -1,5 +1,0 @@
-    .exec(
-      http("${path}")
-        .${method}("${path}")
-        .headers(${headers})
-    )
