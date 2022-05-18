@@ -1,4 +1,5 @@
 import {Header} from './http';
+import { Setup } from './journey';
 
 export type Request = {
     readonly timestamp: number,
@@ -15,6 +16,6 @@ export type Simulation = {
     readonly packageName: string,
     readonly scenarioName: string,
     readonly baseUrl: string,
-    readonly maxUsersCount: number,
+    readonly scalabilitySetup: Setup,
     readonly requests: ReadonlyArray<Request>,
 }
