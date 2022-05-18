@@ -5,6 +5,7 @@ export type Journey = {
     readonly kibanaVersion: string,
     readonly maxUsersCount: number,
     readonly traceItems: ReadonlyArray<TraceItem>,
+    readonly scalabilitySetup: Setup,
 }
 
 export type Transaction = {
@@ -50,5 +51,19 @@ export type TraceItem = {
     readonly response: {
         readonly status: string;
     }
-    readonly transaction: TransactionItem; 
+    readonly transaction: TransactionItem;
 }
+
+export type Setup = {
+  readonly warmup: { readonly stages: ReadonlyArray<Stage> },
+  readonly test:{ readonly stages: ReadonlyArray<Stage> },
+  readonly maxDuration: string,
+}
+
+export type Stage = {
+  readonly action: string,
+  readonly minUsersCount?: number,
+  readonly maxUsersCount: number,
+  readonly duration: string
+}
+

@@ -29,12 +29,22 @@ export const generateSimulations = () => {
   jsonInDir.forEach(file => {
     const journey: Journey = JSON.parse(fs.readFileSync(path.resolve(dir, file)).toString());
     // const requests = parseTraces(journey.traceItems.filter(tr => tr.transactionType === 'request'));
+
+    if (!journey.traceItems || journey.traceItems.length === 0) {
+      return console.error(`No 'traceItems' found in json`);
+    }
+
+    if (!journey.scalabilitySetup) {
+      return console.error(`No 'scalabilitySetup' found in json`);
+    }
+
     const requests = getHttpRequests(journey.traceItems);
 
     if (logs) {
       requests.forEach(req => console.log(`${req.date} ${req.transactionId} ${req.method} ${req.path}`))
     }
 
+    const scalabilitySetup = journey.scalabilitySetup;
     const simulationName = `${journey.journeyName.replace(/\s/g, "")}`;
     const filename = `${simulationName}.scala`;
     const outputDir = path.resolve('output');
@@ -45,8 +55,8 @@ export const generateSimulations = () => {
       packageName,
       scenarioName: `${journey.journeyName} ${journey.kibanaVersion}`,
       baseUrl: `${baseUrl.protocol}//${baseUrl.host}`,
-      maxUsersCount: journey.maxUsersCount,
-      requests: requests
+      scalabilitySetup,
+      requests
     });
 
     if (!fs.existsSync(outputDir)) {

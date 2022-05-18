@@ -1,4 +1,5 @@
 import { Header } from './types/http';
+import { Stage } from './types/journey';
 import { Request, Simulation } from './types/simulation';
 
 const AUTH_PATH = '/internal/security/login';
@@ -106,10 +107,27 @@ export const buildProtocol = (baseUrl: string) =>
     .userAgentHeader("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.83 Safari/537.36")`;
 
 export const buildScenario = (scenarioName: string) =>
-`  val scn = scenario("${scenarioName}")`;
+`  val warmup = scenario("${scenarioName} warmup")
+    .exec(steps)
 
-export const buildSetup = (maxUsersCount: number) =>
-`  setUp(scn.inject(atOnceUsers(${maxUsersCount}))).protocols(httpProtocol)`;
+  val test = scenario("${scenarioName} test")
+    .exec(steps)`;
+
+export const buildSetup = (warmupStages: string, testStages: string, maxDuration: string) =>
+`  setUp(
+    warmup
+      .inject(
+        ${warmupStages}
+      )
+      .protocols(httpProtocol)
+      .andThen(
+        test
+          .inject(
+            ${testStages}
+          )
+          .protocols(httpProtocol)
+      )
+  ).maxDuration(${maxDuration})`;
 
 export const buildExecStep = (request: Request) => {
   const headers = buildHeaders(request.headers);
@@ -126,7 +144,7 @@ export const buildExecStep = (request: Request) => {
 }
 
 const constructScenario = (scenarioName: string, requests: ReadonlyArray<Request>): string => {
-  const start = buildScenario(scenarioName);
+  const scenario = buildScenario(scenarioName);
   // convert requests into array of Gatling exec http calls
   const execs = requests.map((request, index, reqArray) => {
     // construct Gatling exec http calls
@@ -140,14 +158,30 @@ const constructScenario = (scenarioName: string, requests: ReadonlyArray<Request
     }
     return exec;
   });
-  return start + '\n' + execs.join('\n');
+  const steps = execs.join('\n');
+  const finalSteps = steps.substring(steps.indexOf('.') + 1);
+
+  return '  val steps = ' + finalSteps + '\n\n' + scenario;
+}
+
+const constructStages = (stages: ReadonlyArray<Stage>) => {
+  return stages.map(stage => {
+    return stage.action === 'constantConcurrentUsers'
+      ? `${stage.action}(${stage.maxUsersCount}) during (${getDuration(stage.duration)})`
+      : `${stage.action}(${stage.minUsersCount}) to ${stage.maxUsersCount} during (${getDuration(stage.duration)})`
+  }).join(', ');
+}
+
+const getDuration = (duration: string) => {
+  const value = duration.replace(/\D+/, '');
+  return duration.endsWith('m') ? `${value} * 60` : value;
 }
 
 export const buildSimulation = (params: Simulation) => {
-  const { simulationName, packageName, scenarioName, baseUrl, maxUsersCount, requests } = params;
+  const { simulationName, packageName, scenarioName, baseUrl, requests, scalabilitySetup } = params;
   const protocol = buildProtocol(baseUrl);
   const scenario = constructScenario(scenarioName, requests);
-  const setup = buildSetup(maxUsersCount);
+  const setup = buildSetup(constructStages(scalabilitySetup.warmup.stages), constructStages(scalabilitySetup.test.stages), getDuration(scalabilitySetup.maxDuration));
 
   return buildSimulationFromTemplate(packageName, simulationName, protocol, scenario, setup);
 }
